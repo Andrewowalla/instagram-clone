@@ -1,0 +1,27 @@
+{%extends "registration/base.html"%} 
+{% load bootstrap4 %}
+{% block content %}
+<div class="container">
+    <h1>login page</h1>
+    <form  action="" method="post">
+        {% csrf_token %}
+
+        <span> {{login_form.email.label}} </span>
+        <p> {{login_form.email}} </p>
+        <span> {{login_form.password.label}} </span>
+        <p> {{login_form.password}} </p>
+
+        {% for error in login_form.errors %}
+            <p style = "color:red" > {{ error }}</p>
+        {% endfor %}
+
+        {% if login_form.non_field_errors %}
+            <p style = "color:red" > login_form.non_field_errors </p>
+
+        {% endif %}
+
+        <button type="submit" > Login </button>
+
+      </form>
+</div>
+{% endblock %}

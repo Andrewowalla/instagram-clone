@@ -23,11 +23,20 @@ class Image(models.Model):
     caption = models.CharField(max_length=150)
     profile = models.ForeignKey(Profile,  on_delete=models.CASCADE, default=None)
     likes = models.ForeignKey(Likes, on_delete=models.CASCADE, default=0)
-    comment = models.CharField(max_length=150)
+    # comment = models.CharField(max_length=150)
     upload_time = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
         return str(self.user)
+
+class Comment(models.Model):
+    comment = models.TextField()
+    upload_time = models.DateTimeField(auto_now_add=True)
+    image = models.ForeignKey(Image,on_delete=models.CASCADE)
+    user = models.ForeignKey(User,on_delete=models.CASCADE)
+
+    def __str__(self):
+        return self.image
 
 class MyUserManager(BaseUserManager):
     def create_user(self, first_name, last_name, email, username, password=None):
