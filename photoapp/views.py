@@ -23,3 +23,6 @@ def register(request):
         context['register_form'] = form
 
     return render(request, "registration/register.html", context)
+
+def login_view(request):
+    return render(request, "registration/login.html")
