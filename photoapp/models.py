@@ -22,6 +22,7 @@ class Image(models.Model):
     profile = models.ForeignKey(Profile,  on_delete=models.CASCADE, default=None)
     likes = models.ForeignKey(Likes, on_delete=models.CASCADE, default=0)
     comment = models.CharField(max_length=150)
+    upload_time = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
         return str(self.user)
