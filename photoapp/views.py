@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from .models import *
 from django.shortcuts import render, redirect
-from photoapp.forms import UserRegistrationForm, UserLoginForms
+from photoapp.forms import UserRegistrationForm
 
 # Create your views here.
 

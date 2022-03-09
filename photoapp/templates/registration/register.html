@@ -1,0 +1,25 @@
+{%extends "registration/base.html"%} 
+{% load bootstrap4 %}
+{% block content %}
+<div class="container">
+    <h1>register page</h1>
+    <form  action="" method="post">
+        {% csrf_token %}
+        <p> {{register_form.email.label}} </p>
+        <p> {{register_form.email}} </p>
+        <p> {{register_form.username.label}} </p>
+        <p> {{register_form.username}} </p>
+        <p> {{register_form.password1.label}} </p>
+        <p> {{register_form.password1}} </p>
+        <p> {{register_form.password2.label}} </p>
+        <p> {{register_form.password2}} </p>
+
+        {% for error in register_form.errors %}
+            <p style = "color:red" > {{ error }}</p>
+        {% endfor %}
+
+        <button type="submit" > Create Account</button>
+
+      </form>
+</div>
+{% endblock %}
