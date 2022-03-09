@@ -6,3 +6,4 @@ from .models import *
 def homepage(request):
     images = Image.objects.all()
     return render(request, 'home.html', {"images":images})
+
