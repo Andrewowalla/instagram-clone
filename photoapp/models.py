@@ -3,7 +3,7 @@ from django.db import models
 # Create your models here.
 
 class Profile(models.Model):
-    profilepic = models.ImageField(upload_to = 'image')
+    profilepic = models.ImageField(upload_to = 'images')
     bio = models.CharField(max_length=100)
     username = models.CharField(max_length=20)
 
