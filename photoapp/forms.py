@@ -2,6 +2,7 @@ from django import forms
 from django.contrib.auth.forms import UserCreationForm
 from photoapp.models import MyUser
 from django.contrib.auth import authenticate
+from .models import Image, Profile
 
 class UserRegistrationForm(UserCreationForm):
     class Meta:
@@ -22,3 +23,8 @@ class UserLoginForm(forms.ModelForm):
 
             if not authenticate(email=email, password=password):
                 raise forms.ValidationError("invalid credentials")
+
+class NewImageForm(forms.ModelForm):
+    class Meta:
+        model = Image
+        exclude = ['date_created', 'likes', 'user']
