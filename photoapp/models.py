@@ -13,6 +13,12 @@ class Profile(models.Model):
     def save_profile(self):
         self.save()
 
+
+    @classmethod
+    def search_profile(cls, search_query):
+        profile = cls.objects.filter(username__icontains = search_query)
+        return profile
+
     def __str__(self):
         return self.username
 
