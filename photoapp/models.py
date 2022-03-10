@@ -13,6 +13,15 @@ class Profile(models.Model):
     def save_profile(self):
         self.save()
 
+    def delete_profile(self):
+        self.delete()
+
+    def update_profile(self, new):
+        self.profilepic = new.profilepic
+        self.bio = new.bio
+        self.username = new.username
+        self.save()
+
 
     @classmethod
     def search_profile(cls, search_query):
@@ -48,7 +57,7 @@ class Comment(models.Model):
     user = models.ForeignKey(User,on_delete=models.CASCADE)
 
     def __str__(self):
-        return self.image
+        return self.comment
 
 class MyUserManager(BaseUserManager):
     def create_user(self, first_name, last_name, email, username, password=None):

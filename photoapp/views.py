@@ -62,7 +62,7 @@ def image(request, id):
             comment = request.POST.get('comment')
         )
 
-        return redirect('home')
+        return redirect('homepage')
     context = {
         'image':image,
         'comments': comments
