@@ -16,8 +16,7 @@
         <div style="margin: 3rem auto; width: 40rem">
             <div class="card">
                 <h5 class="card-title">
-                    <img class="rounded-circle mr-12 article-img" style="width: 70px;"
-                        src="{{ image.image.url }}">
+                    <img class="rounded-circle mr-12 article-img" style="width: 70px;" src="{{ image.image.url }}">
                         <a class="mr-2" href="{% url 'homepage' %}">{{ image.user }}</a>
                 </h5>
                 <a href="{% url 'homepage' %}"> <img src="{{ image.image.url }}" class="card-img-top" alt="Phone"/> 
@@ -30,20 +29,24 @@
             <div class="row align-items-center">
                 <div class="col">
                     <a href="{% url 'homepage' %}">
-                    <i style="color: red; font-size: 16px;" class="fa fa-heart"></i>
-                    {{image.likes}} like(s)
+                    <i style="color: beige; font-size: 16px;" class="fa fa-heart-o fa-lg"></i>
+                    {{image.likes}} likes
                     </a>
                 </div>
                 <div class="col">
                     <a href="/image/{{image.id}}/">
-                    <i style=" font-size: 16px; color: blue;" class="fa fa-comment"></i>
-                    {{ image.comments }} comment(s)
+                    <i style=" font-size: 16px; color: blue;" class="fa fa-comment-o fa-lg"></i>
+                    {{ image.comments }} comment
                     </a>
                 </div>
                  <div class="col">
                     <small style="opacity: 8.5; " class="white-important d-flex full-width flex-row-reverse">
-                    {{ image.time_posted | date:"H:i l, d.m.y" }}
+                    {{ image.upload_time | date:"H:i l, d.m.y" }}
                     </small>
+                </div>
+
+                <div class="profilepic__add-comment-container" textarea:focus,textarea:active{ outline: none;} >
+                    <textarea name="comment" placeholder="Add a comment..."></textarea>
                 </div>
             </div>
 

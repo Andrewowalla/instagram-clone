@@ -16,6 +16,9 @@ class Profile(models.Model):
 class Likes(models.Model):
     likes = models.IntegerField(default=0)
 
+    def __str__(self):
+        return str(self.likes)
+
 class Image(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     image = models.ImageField(upload_to = 'images/')
