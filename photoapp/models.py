@@ -47,6 +47,15 @@ class Image(models.Model):
     # comment = models.CharField(max_length=150)
     upload_time = models.DateTimeField(auto_now_add=True)
 
+    def save_image(self):
+        self.save()
+
+    def delete_image(self):
+        self.delete()
+
+    def update_caption(self, new_caption):
+        self.caption = new_caption
+
     def __str__(self):
         return str(self.user)
 
