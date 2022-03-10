@@ -65,6 +65,13 @@ class Comment(models.Model):
     image = models.ForeignKey(Image,on_delete=models.CASCADE)
     user = models.ForeignKey(User,on_delete=models.CASCADE)
 
+    def save_comment(self):
+        self.save()
+
+    def delete_comment(self):
+        self.delete()
+
+
     def __str__(self):
         return self.comment
 
