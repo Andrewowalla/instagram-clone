@@ -1,9 +1,11 @@
 from multiprocessing import context
+from django.core.exceptions import ObjectDoesNotExist
+from django.http.response import Http404
 from django.shortcuts import render
 from .models import *
 from django.contrib import messages
 from django.shortcuts import render, redirect
-from photoapp.forms import UserRegistrationForm, UserLoginForm
+from photoapp.forms import UserRegistrationForm, UserLoginForm, NewImageForm
 from django.contrib.auth import authenticate, login, logout
 
 # Create your views here.
@@ -38,7 +40,7 @@ def new_image(request):
             image = form.save(commit=False)
             image.user = current_user
             image.save()
-        return redirect('home')
+        return redirect('homepage')
     else:
         form = NewImageForm()
         context = {
@@ -46,7 +48,26 @@ def new_image(request):
         }
         return render(request, 'new_image.html', context)
 
+def image(request, id):
+    try:
+        image = Image.objects.get(id=id)
+    except ObjectDoesNotExist:
+        raise Http404()
+    comments = image.comment_set.all()
 
+    if request.method == 'POST':
+        comment = Comment.objects.create (
+            user = request.user,
+            image = image,
+            comment = request.POST.get('comment')
+        )
+
+        return redirect('home')
+    context = {
+        'image':image,
+        'comments': comments
+    }
+    return render(request, 'image.html', context)
 
 def register(request):
     context = {}
