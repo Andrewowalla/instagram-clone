@@ -10,6 +10,9 @@ class Profile(models.Model):
     bio = models.CharField(max_length=100)
     username = models.CharField(max_length=20)
 
+    def save_profile(self):
+        self.save()
+
     def __str__(self):
         return self.username
 
