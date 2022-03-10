@@ -29,6 +29,23 @@ def search_results(request):
         message = 'You havent searched for any profile'
         return render(request, 'search.html', {'message':message})
 
+def new_image(request):
+    current_user = request.user
+    image = Image(user = request.user )
+    if request.method == 'POST':
+        form = NewImageForm(request.POST, request.FILES, instance= image)
+        if form.is_valid():
+            image = form.save(commit=False)
+            image.user = current_user
+            image.save()
+        return redirect('home')
+    else:
+        form = NewImageForm()
+        context = {
+            'form':form
+        }
+        return render(request, 'new_image.html', context)
+
 
 
 def register(request):
