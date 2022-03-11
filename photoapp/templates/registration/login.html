@@ -3,39 +3,15 @@
 {% load static %}
 {% block content %}
 
-<!-- <div class="container login-page content">
-    <div class="login-form">
-        <span class="navbar-brand m-0 pt-0 pb-0">
-            <a class="navbar-brand" href="/"><i  ></i><img src="{% static 'pho/insta.png' %}"  alt= "" class="logo"></a>
-        </span>
-            
-        <div>
-            <form action="" method='POST'>
-                {% csrf_token %}
-                <p> <input type="text" name='username' placeholder="username"> </p>
-    
-                <p> <input type="password" name='password' placeholder="Enter password"> </p>
-    
-    
-                <button type="submit" value="login">login</button>
-    
-            </form>
-        </div>      
-    </div>
-
-    <div class="lower-container">
-        <p>haven't signed up yet?</p>
-        <a href="{% url 'register' %}">sign up</a>
-    </div> -->
 
 
-<div class="container">
-    <h1>login page</h1>
+<div class="container text-center">
+    
     
         <span class="navbar-brand m-0 pt-0 pb-0">
             <a class="navbar-brand" href="/"><i  ></i><img src="{% static 'pho/insta.png' %}"  alt= "" class="logo"></a>
         </span>
-    <form  action="{% url 'login'%}" method="post">
+    <form  action="{% url 'login'%}" method="post" class="text-center" >
         {% csrf_token %}
 
         <span> {{login_form.email.label}} </span>

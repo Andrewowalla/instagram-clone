@@ -79,8 +79,8 @@ def view_profile(request, id):
         return render(request, 'profile.html', context)
     except:
         messages.warning(request, 'Sorry, but it seems the profile is not set up')
-        return redirect('home')
-  
+        return redirect('homepage')
+
 
 def update_profile(request):
     if request.method == 'POST':

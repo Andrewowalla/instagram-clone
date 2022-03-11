@@ -1,9 +1,23 @@
 {%extends "registration/base.html"%} 
 {% load bootstrap4 %}
+{% load static %}
 {% block content %}
+
+
+
+
 <div class="container">
-    <h1>register page</h1>
-    <form  action="" method="post">
+    <h4 class="card-title mt-3 text-center" > <img src="{% static 'pho/insta.png' %}"  alt= "" class="logo"> </h4>
+        <h4 class="card-title mt-3 text-center">Sign up to see photos and</h4>
+        <p class="text-center"> videos from your friends. </p>
+        <p>
+            
+            <a href="" class="btn btn-block btn-facebook"> <i class="fab fa-facebook-f"></i>   Login via facebook</a>
+        </p>
+        <p class="divider-text text-center" >
+            <span class="bg-light  text-center">OR</span>
+        </p>
+    <form  action="" method="post" class="text-center">
         {% csrf_token %}
         <p> {{register_form.email.label}} </p>
         <p> {{register_form.email}} </p>
