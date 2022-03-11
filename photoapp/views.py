@@ -5,7 +5,7 @@ from django.shortcuts import render
 from .models import *
 from django.contrib import messages
 from django.shortcuts import render, redirect
-from photoapp.forms import UserRegistrationForm, UserLoginForm, NewImageForm
+from photoapp.forms import UserRegistrationForm, NewImageForm, LoginForm
 from django.contrib.auth import authenticate, login, logout
 
 # Create your views here.
@@ -87,25 +87,24 @@ def register(request):
 def login_view(request):
     context = {}
     if request.POST:
-        form = UserLoginForm(request.POST)
+        form = LoginForm(request.POST)
         if form.is_valid():
-            email = request.POST['email']
-            password = request.POST['password']
+            email = form.cleaned_data['email']
+            password = form.cleaned_data['password']
 
-            try:
-                user = Profile.objects.get(email = email)
-            except:
-                messages.error(request, 'user does not exist')
 
             user = authenticate(request, email=email, password=password)
 
             if user is not None:
                 login(request, user)
             return redirect("homepage")
-    else:
-        messages.error(request, 'Username or Password does not exist')
-        form = UserLoginForm()
-        context['login_form'] = form
+        else:
+            messages.error(request, 'Username or Password does not exist')
+            message = 'Not found'
+            form = LoginForm()
+            context['login_form'] = form
+            context['message'] = message
+            return render(request, "registration/login.html", context)
     return render(request, "registration/login.html", context)
 
 def logout_view(request):

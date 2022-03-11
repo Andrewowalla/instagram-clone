@@ -7,11 +7,11 @@
 
     <!-- <div class="row align-items-center">-->
 
-        <div class="row">
+        <!-- <div class="row">
             <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3" style="margin-left: 10rem; margin-bottom: 3rem;  display: inline-block;">
-            <br>
+            
             </div>
-        </div>
+        </div> -->
         {% for image in images %}
         <div style="margin: 3rem auto; width: 40rem">
             <div class="card">
@@ -30,13 +30,13 @@
                 <div class="col">
                     <a href="{% url 'homepage' %}">
                     
-                    <i style="color: red; font-size: 16px;" class="fa fa-heart-o fa-lg"></i>
+                    <i style="color: red; font-size: 16px;" class="fa fa-heart"></i>
                     {{image.likes}} likes
                     </a>
                 </div>
                 <div class="col">
                     <a href="/image/{{image.id}}/">
-                    <i style=" font-size: 16px; color: blue;" class="fa fa-comment-o fa-lg"></i>
+                    <i style=" font-size: 16px; color:black;" class="fa fa-comment"></i>
                     {{ image.comments }} comment
                     </a>
                 </div>
@@ -45,10 +45,21 @@
                     {{ image.upload_time | date:"H:i l, d.m.y" }}
                     </small>
                 </div>
-
-                <div class="profilepic__add-comment-container" textarea:focus,textarea:active{ outline: none;} >
-                    <textarea name="comment" placeholder="Add a comment..."></textarea>
+            </div>
+            <div class="row align-items-center">
+                <div class="input-tray col comment-form">
+                    <form action="" method="POST">
+                        {% csrf_token %}
+                        <input type="text" name="comment" placeholder="Add a comment...">
+                    </form>
                 </div>
+                <div class="send-comment col">
+                    <a href="">Post</a>
+                </div>
+
+                <!-- <div class="profilepic__add-comment-container" textarea:focus,textarea:active{ outline: none;} >
+                    <textarea name="comment" placeholder="Add a comment..."></textarea>
+                </div> -->
             </div>
 
             

@@ -3,3 +3,8 @@
     border-color: rgb(230, 225, 225);
     padding: 0% 0% 1px 0% !important;
 }
+
+.content{
+    max-width: 500px;
+    margin: auto;
+}
